@@ -207,6 +207,11 @@ set(ICONS_SOURCES
 
 # Support for Minecraft instances and launch
 set(MINECRAFT_SOURCES
+
+    # Logging
+    minecraft/Logging.h
+    minecraft/Logging.cpp
+
     # Minecraft support
     minecraft/auth/AccountData.cpp
     minecraft/auth/AccountData.h
@@ -671,6 +676,22 @@ ecm_qt_declare_logging_category(CORE_SOURCES
 )
 
 ecm_qt_export_logging_category(
+    IDENTIFIER instanceProfileC
+    CATEGORY_NAME "launcher.instance.profile"
+    DEFAULT_SEVERITY Debug
+    DESCRIPTION "Profile actions"
+    EXPORT "${Launcher_Name}"
+)
+
+ecm_qt_export_logging_category(
+    IDENTIFIER instanceProfileResolveC
+    CATEGORY_NAME "launcher.instance.profile.resolve"
+    DEFAULT_SEVERITY Debug
+    DESCRIPTION "Profile component resolusion actions"
+    EXPORT "${Launcher_Name}"
+)
+
+ecm_qt_export_logging_category(
     IDENTIFIER taskLogC
     CATEGORY_NAME "launcher.task"
     DEFAULT_SEVERITY Debug
@@ -682,7 +703,7 @@ ecm_qt_export_logging_category(
     IDENTIFIER taskNetLogC
     CATEGORY_NAME "launcher.task.net"
     DEFAULT_SEVERITY Debug
-    DESCRIPTION "task network action"
+    DESCRIPTION "Task network action"
     EXPORT "${Launcher_Name}"
 )
 
@@ -690,14 +711,14 @@ ecm_qt_export_logging_category(
     IDENTIFIER taskDownloadLogC
     CATEGORY_NAME "launcher.task.net.download"
     DEFAULT_SEVERITY Debug
-    DESCRIPTION "task network download actions"
+    DESCRIPTION "Task network download actions"
     EXPORT "${Launcher_Name}"
 )
 ecm_qt_export_logging_category(
     IDENTIFIER taskUploadLogC
     CATEGORY_NAME "launcher.task.net.upload"
     DEFAULT_SEVERITY Debug
-    DESCRIPTION "task network upload actions"
+    DESCRIPTION "Task network upload actions"
     EXPORT "${Launcher_Name}"
 )
 
