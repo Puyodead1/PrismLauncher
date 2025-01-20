@@ -1045,8 +1045,6 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/CopyInstanceDialog.h
     ui/dialogs/CustomMessageBox.cpp
     ui/dialogs/CustomMessageBox.h
-    ui/dialogs/EditAccountDialog.cpp
-    ui/dialogs/EditAccountDialog.h
     ui/dialogs/ExportInstanceDialog.cpp
     ui/dialogs/ExportInstanceDialog.h
     ui/dialogs/ExportPackDialog.cpp
@@ -1100,8 +1098,6 @@ SET(LAUNCHER_SOURCES
     ui/widgets/CustomCommands.h
     ui/widgets/EnvironmentVariables.cpp
     ui/widgets/EnvironmentVariables.h
-    ui/widgets/DropLabel.cpp
-    ui/widgets/DropLabel.h
     ui/widgets/FocusLineEdit.cpp
     ui/widgets/FocusLineEdit.h
     ui/widgets/IconLabel.cpp
@@ -1233,7 +1229,6 @@ qt_wrap_ui(LAUNCHER_UI
     ui/dialogs/MSALoginDialog.ui
     ui/dialogs/OfflineLoginDialog.ui
     ui/dialogs/AboutDialog.ui
-    ui/dialogs/EditAccountDialog.ui
     ui/dialogs/ReviewMessageBox.ui
     ui/dialogs/ScrollMessageBox.ui
     ui/dialogs/BlockedModsDialog.ui
