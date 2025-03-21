@@ -818,7 +818,8 @@ SET(LAUNCHER_SOURCES
     resources/flat/flat.qrc
     resources/flat_white/flat_white.qrc
     resources/documents/documents.qrc
-    ../${Launcher_Branding_LogoQRC}
+    resources/shaders/shaders.qrc
+    "${CMAKE_CURRENT_BINARY_DIR}/../${Launcher_Branding_LogoQRC}"
 
     # Icons
     icons/MMCIcon.h
@@ -916,7 +917,6 @@ SET(LAUNCHER_SOURCES
     ui/pages/instance/NotesPage.h
     ui/pages/instance/LogPage.cpp
     ui/pages/instance/LogPage.h
-    ui/pages/instance/InstanceSettingsPage.cpp
     ui/pages/instance/InstanceSettingsPage.h
     ui/pages/instance/ScreenshotsPage.cpp
     ui/pages/instance/ScreenshotsPage.h
@@ -926,21 +926,22 @@ SET(LAUNCHER_SOURCES
     ui/pages/instance/ServersPage.h
     ui/pages/instance/WorldListPage.cpp
     ui/pages/instance/WorldListPage.h
-
+    ui/pages/instance/McClient.cpp
+    ui/pages/instance/McClient.h
+    ui/pages/instance/McResolver.cpp
+    ui/pages/instance/McResolver.h
+    ui/pages/instance/ServerPingTask.cpp
+    ui/pages/instance/ServerPingTask.h
+    
     # GUI - global settings pages
     ui/pages/global/AccountListPage.cpp
     ui/pages/global/AccountListPage.h
-    ui/pages/global/CustomCommandsPage.cpp
-    ui/pages/global/CustomCommandsPage.h
-    ui/pages/global/EnvironmentVariablesPage.cpp
-    ui/pages/global/EnvironmentVariablesPage.h
     ui/pages/global/ExternalToolsPage.cpp
     ui/pages/global/ExternalToolsPage.h
     ui/pages/global/JavaPage.cpp
     ui/pages/global/JavaPage.h
     ui/pages/global/LanguagePage.cpp
     ui/pages/global/LanguagePage.h
-    ui/pages/global/MinecraftPage.cpp
     ui/pages/global/MinecraftPage.h
     ui/pages/global/LauncherPage.cpp
     ui/pages/global/LauncherPage.h
@@ -1089,6 +1090,13 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/skins/SkinManageDialog.cpp
     ui/dialogs/skins/SkinManageDialog.h
 
+    ui/dialogs/skins/draw/SkinOpenGLWindow.h
+    ui/dialogs/skins/draw/SkinOpenGLWindow.cpp
+    ui/dialogs/skins/draw/Scene.h
+    ui/dialogs/skins/draw/Scene.cpp
+    ui/dialogs/skins/draw/BoxGeometry.h
+    ui/dialogs/skins/draw/BoxGeometry.cpp
+
     # GUI - widgets
     ui/widgets/CheckComboBox.cpp
     ui/widgets/CheckComboBox.h
@@ -1102,8 +1110,8 @@ SET(LAUNCHER_SOURCES
     ui/widgets/FocusLineEdit.h
     ui/widgets/IconLabel.cpp
     ui/widgets/IconLabel.h
-    ui/widgets/JavaSettingsWidget.cpp
-    ui/widgets/JavaSettingsWidget.h
+    ui/widgets/JavaWizardWidget.cpp
+    ui/widgets/JavaWizardWidget.h
     ui/widgets/LabeledToolButton.cpp
     ui/widgets/LabeledToolButton.h
     ui/widgets/LanguageSelectionWidget.cpp
@@ -1139,6 +1147,10 @@ SET(LAUNCHER_SOURCES
     ui/widgets/WideBar.cpp
     ui/widgets/ThemeCustomizationWidget.h
     ui/widgets/ThemeCustomizationWidget.cpp
+    ui/widgets/MinecraftSettingsWidget.h
+    ui/widgets/MinecraftSettingsWidget.cpp
+    ui/widgets/JavaSettingsWidget.h
+    ui/widgets/JavaSettingsWidget.cpp
 
     # GUI - instance group view
     ui/instanceview/InstanceProxyModel.cpp
@@ -1182,7 +1194,6 @@ qt_wrap_ui(LAUNCHER_UI
     ui/pages/global/LauncherPage.ui
     ui/pages/global/APIPage.ui
     ui/pages/global/ProxyPage.ui
-    ui/pages/global/MinecraftPage.ui
     ui/pages/global/ExternalToolsPage.ui
     ui/pages/instance/ExternalResourcesPage.ui
     ui/pages/instance/NotesPage.ui
@@ -1190,7 +1201,6 @@ qt_wrap_ui(LAUNCHER_UI
     ui/pages/instance/ServersPage.ui
     ui/pages/instance/GameOptionsPage.ui
     ui/pages/instance/OtherLogsPage.ui
-    ui/pages/instance/InstanceSettingsPage.ui
     ui/pages/instance/VersionPage.ui
     ui/pages/instance/ManagedPackPage.ui
     ui/pages/instance/WorldListPage.ui
@@ -1214,6 +1224,8 @@ qt_wrap_ui(LAUNCHER_UI
     ui/widgets/ModFilterWidget.ui
     ui/widgets/SubTaskProgressBar.ui
     ui/widgets/ThemeCustomizationWidget.ui
+    ui/widgets/MinecraftSettingsWidget.ui
+    ui/widgets/JavaSettingsWidget.ui
     ui/dialogs/CopyInstanceDialog.ui
     ui/dialogs/ProfileSetupDialog.ui
     ui/dialogs/ProgressDialog.ui
@@ -1233,7 +1245,6 @@ qt_wrap_ui(LAUNCHER_UI
     ui/dialogs/ScrollMessageBox.ui
     ui/dialogs/BlockedModsDialog.ui
     ui/dialogs/ChooseProviderDialog.ui
-
     ui/dialogs/skins/SkinManageDialog.ui
 )
 
@@ -1258,7 +1269,8 @@ qt_add_resources(LAUNCHER_RESOURCES
     resources/iOS/iOS.qrc
     resources/flat/flat.qrc
     resources/documents/documents.qrc
-    ../${Launcher_Branding_LogoQRC}
+    resources/shaders/shaders.qrc
+    "${CMAKE_CURRENT_BINARY_DIR}/../${Launcher_Branding_LogoQRC}"
 )
 
 qt_wrap_ui(PRISMUPDATER_UI
@@ -1308,6 +1320,7 @@ target_link_libraries(Launcher_logic
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::NetworkAuth
+    Qt${QT_VERSION_MAJOR}::OpenGL
     ${Launcher_QT_DBUS}
     ${Launcher_QT_LIBS}
 )
